@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Advice from "./components/advice/Advice";
 
 function App() {
+  const [advice, setAdvice] = useState({});
+
+  // useEffect(() => {
+  //   let intervalId = setInterval(() => {
+  //     fetchAdvice();
+  //   }, 3000);
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, []);
+
+  const fetchAdvice = () => {
+    try {
+      fetch("http://quotes.stormconsultancy.co.uk/random.json")
+        .then((res) => res.json())
+        .then((data) => setAdvice(data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Advice
+        advice={advice.quote}
+        author={advice.author}
+        fetchA={fetchAdvice}
+      />
     </div>
   );
 }

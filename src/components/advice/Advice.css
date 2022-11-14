@@ -1,0 +1,40 @@
+.advice-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 900px;
+  text-align: center;
+}
+.progAdviceImg {
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.theAdvice {
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
+h2::before {
+  content: open-quote;
+}
+h2::after {
+  content: close-quote;
+}
+h1::before {
+  content: "-";
+}
+.adviceBtn {
+  padding: 1rem;
+  background-color: transparent;
+  border-radius: 10%;
+  border: 1px solid black;
+  cursor: pointer;
+  position: fixed;
+  bottom: 300px;
+  font-weight: bold;
+}
+.adviceBtn:hover {
+  background-color: rgba(220, 203, 180, 0.859);
+}
